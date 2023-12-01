@@ -49,12 +49,32 @@
         section {
             padding: 20px;
         }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>KSU Student Favorites</h1>
+    <h1>KSU Weather and Climate</h1>
 </header>
 
 <nav>
@@ -69,10 +89,34 @@
     </ul>
 </nav>
 
+
 <section>
-    <h2>Weather</h2>
-    <p>Discover the best places to eat around KSU. Whether you're looking for a quick bite or a sit-down meal, we've got you covered!</p>
-    <!-- Add your content specific to the "Weather" page here -->
+    <h2>Current Weather in Kent, Ohio</h2>
+
+    <table border="1">
+    
+        <tr>
+            <th>Tempture</th>
+            <th>Feels Like</th>
+            <th>Humidity</th>
+            <th>Wind Speed</th>
+            <th>General Weather</th>
+            <th>Sun Rise Time</th>
+            <th>Sun Set Time</th>
+        </tr>
+        <tr>
+            <td>{{ variable1 }}</td>
+            <td>{{ variable2 }}</td>
+            <td>{{ variable3 }}</td>
+            <td>{{ variable4 }}</td>
+            <td>{{ variable5 }}</td>
+            <td>{{ variable6 }}</td>
+            <td>{{ variable7 }}</td>
+        </tr>
+    </table>
+        
+    <p> </p>
+
 </section>
 
 </body>
