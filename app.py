@@ -4,79 +4,19 @@ import requests
 
 app = Flask(__name__)
 
-<<<<<<< Updated upstream
-def kelvin_to_fahrenhite(kelvin):
-    celsius = kelvin - 273.15
-    fahrenhite = celsius * (9/5) + 32
-    return fahrenhite
-        
-=======
-@app.route('/')
-def api_main():
-    BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
-    API_KEY = "YOUR_API_KEY"  # Replace with your actual API key
-    CITY = "Kent"
-    url = BASE_URL + "appid=" + API_KEY + "&q=" + CITY
-    response = requests.get(url).json()
-
-    if response['cod'] == 200:  # Check for 'cod' instead of 'status_code'
-        # Temperature
-        temp_kelvin = response['main']['temp']
-        temp_fahrenheit = kelvin_to_fahrenheit(temp_kelvin)
-        # Feels like
-        feels_like_kelvin = response['main']['feels_like']
-        feels_like_fahrenheit = kelvin_to_fahrenheit(feels_like_kelvin)
-        # Humidity
-        humidity = response['main']['humidity']
-        # Weather description
-        description = response['weather'][0]['description']
-        # Sunrise Time
-        sunrise_time = dt.datetime.utcfromtimestamp(response['sys']['sunrise'])
-        # Sunset Time
-        sunset_time = dt.datetime.utcfromtimestamp(response['sys']['sunset'])
-        # Wind Speed
-        wind_speed_in_mps = response['wind']['speed']
-        wind_speed = mps_to_mph(wind_speed_in_mps)
-    else:
-        return "Error: Unable to fetch data from the API."
-
-    return template_render(CITY, temp_fahrenheit, feels_like_fahrenheit, humidity, description, sunrise_time, sunset_time, wind_speed)
-
 def kelvin_to_fahrenheit(kelvin):
     celsius = kelvin - 273.15
     fahrenheit = celsius * (9/5) + 32
     return fahrenheit
 
->>>>>>> Stashed changes
 def mps_to_mph(mps):
     mph = mps * 2.237
     return mph
 
-<<<<<<< Updated upstream
-BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
-API_KEY = "6af6a8ccf981a5901934b56fc6850cf7"
-CITY = "Kent, US, 67"
-url = BASE_URL + "appid=" + API_KEY + "&q=" + CITY
-response = requests.get(url).json()
+@app.route('/')
+def api_main():
+    return home()
 
-
-#Tempture
-temp_kelvin = response['main']['temp']
-temp_fahrenhite = kelvin_to_fahrenhite(temp_kelvin)
-#Feels like
-feels_like_kelvin = response['main']['feels_like']
-feels_like_fahrenhite = kelvin_to_fahrenhite(feels_like_kelvin)
-#Humidity
-humidity = response['main']['humidity']
-#Weather description
-description = response['weather'][0]['description']
-#Sunrise Time
-sunrise_time = dt.datetime.utcfromtimestamp(response['sys']['sunrise'] + response['timezone'])
-#Sunset Time
-sunset_time = dt.datetime.utcfromtimestamp(response['sys']['sunset'] + response['timezone'])
-#Wind Speed
-wind_speed_in_mps = response['wind']['speed']
-wind_speed = mps_to_mph(wind_speed_in_mps)
 
 
 @app.route('/TestHome.html')
@@ -119,32 +59,50 @@ def StudentResourcesAcademic():
 def StudentResourcesFinancial():
     return render_template('StudentResourcesFinancial.html')
 
+@app.route('/StudentResourcesHolistic.html')
+def StudentResourcesHolistic():
+    return render_template('StudentResourcesHolistic.html')
 
 @app.route('/Weather.html')
 def Weather():
-    return render_template('Weather.html',
-        variable1 = (f" Tempture in Kent: {temp_fahrenhite:.2f}°F "),
-        variable2 = (f" It feels like {feels_like_fahrenhite:.2f}°F in Kent: "),
-        variable3 = (f" Humidity in Kent: {humidity}% "),
-        variable4 = (f" Wind Speed in Kent: {wind_speed}MPH "),
-        variable5 = (f" General Weather in Kent: {description} "),
-        variable6 = (f" Sun rises in Kent at {sunrise_time} local time. "),
-        variable7 = (f" Sun sets in Kent at {sunset_time} local time. "))
+    BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
+    API_KEY = "759cb2753beefcf28c82cafe746183ab"  # Replace with your actual API key
+    CITY = "Kent"
+    url = BASE_URL + "appid=" + API_KEY + "&q=" + CITY
+    response = requests.get(url).json()
 
+    if response['cod'] == 200:  # Check for 'cod' instead of 'status_code'
+        # Temperature
+        temp_kelvin = response['main']['temp']
+        temp_fahrenheit = kelvin_to_fahrenheit(temp_kelvin)
+        # Feels like
+        feels_like_kelvin = response['main']['feels_like']
+        feels_like_fahrenheit = kelvin_to_fahrenheit(feels_like_kelvin)
+        # Humidity
+        humidity = response['main']['humidity']
+        # Weather description
+        description = response['weather'][0]['description']
+        # Sunrise Time
+        sunrise_time = dt.datetime.utcfromtimestamp(response['sys']['sunrise'])
+        # Sunset Time
+        sunset_time = dt.datetime.utcfromtimestamp(response['sys']['sunset'])
+        # Wind Speed
+        wind_speed_in_mps = response['wind']['speed']
+        wind_speed = mps_to_mph(wind_speed_in_mps)
+    else:
+        return "Error: Unable to fetch data from the API."
 
-if __name__ == 'main':
-=======
-def template_render(city, temp, feels_like, humidity, description, sunrise_time, sunset_time, wind_speed):
     return render_template('Weather.html',
-        variable1=f" Temperature in {city}: {temp:.2f}°F ",
-        variable2=f" It feels like {feels_like:.2f}°F in {city}: ",
-        variable3=f" Humidity in {city}: {humidity}% ",
-        variable4=f" Wind Speed in {city}: {wind_speed} MPH ",
-        variable5=f" General Weather in {city}: {description} ",
-        variable6=f" Sun rises in {city} at {sunrise_time} local time. ",
-        variable7=f" Sun sets in {city} at {sunset_time} local time. "
+        variable1=f" Temperature in {CITY}: {temp_fahrenheit:.2f}°F ",
+        variable2=f" It feels like {feels_like_fahrenheit:.2f}°F in {CITY}: ",
+        variable3=f" Humidity in {CITY}: {humidity}% ",
+        variable4=f" Wind Speed in {CITY}: {wind_speed} MPH ",
+        variable5=f" General Weather in {CITY}: {description} ",
+        variable6=f" Sun rises in {CITY} at {sunrise_time} local time. ",
+        variable7=f" Sun sets in {CITY} at {sunset_time} local time. "
     )
 
+
+
 if __name__ == '__main__':
->>>>>>> Stashed changes
     app.run(debug=True)
