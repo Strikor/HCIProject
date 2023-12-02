@@ -71,6 +71,15 @@ def StudentPlanner():
 def StudentResources():
     return render_template('StudentResources.html')
 
+@app.route('/StudentResourcesAcademic.html')
+def StudentResourcesAcademic():
+    return render_template('StudentResourcesAcademic.html')
+
+@app.route('/StudentResourcesFinancial.html')
+def StudentResourcesFinancial():
+    return render_template('StudentResourcesFinancial.html')
+
+
 @app.route('/Weather.html')
 def Weather():
     return render_template('Weather.html',
@@ -81,7 +90,6 @@ def Weather():
         variable5 = (f" General Weather in Kent: {description} "),
         variable6 = (f" Sun rises in Kent at {sunrise_time} local time. "),
         variable7 = (f" Sun sets in Kent at {sunset_time} local time. "))
-    
 
 
 if __name__ == 'main':
