@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSU Student Favorites</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgb(1, 1, 129);
+            color: rgb(255, 249, 165);
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: rgb(253, 244, 117);
+            padding: 1em;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: rgb(41, 41, 170);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            color: rgb(103, 103, 197);
+        }
+
+        section {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>KSU Student Favorites</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="TestHome.html">Home</a></li>
+        <li><a href="StudentPlanner.html">Student Planner</a></li>
+        <li><a href="Events.html">Events</a></li>
+        <li><a href="StudentResources.html">Student Resources</a></li>
+        <li><a href="PlacesToEat.html">Places to Eat</a></li>
+        <li><a href="Weather.html">Weather</a></li>
+        <li><a href="AboutUs.html">About Us</a></li>
+    </ul>
+</nav>
+
+<section>
+    <h1>Welcome to KSU Student Favorites!</h1>
+    <h3>Explore our website to discover the best student resources, plan your schedule with the student planner, find exciting events, and much more.</h3>
+    <section>
+     <img src="{{ url_for('static', filename='images/kent.jpg') }}" style="width: 100%;">
+    </section>
+</section>
+
+</body>
+</html>
+
