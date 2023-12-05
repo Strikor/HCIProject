@@ -154,6 +154,10 @@ def StudentPlanner():
 def StudentResources():
     return render_template('StudentResources.html')
 
+@app.route('/StudentResourcesHolistic.html')
+def StudentResourcesHolistic():
+    return render_template('StudentRecourcesHolistic.html')
+
 @app.route('/StudentResourcesAcademic.html')
 def StudentResourcesAcademic():
     return render_template('StudentResourcesAcademic.html')
@@ -178,7 +182,7 @@ def mps_to_mph(mps):
 @app.route('/Weather.html')
 def Weather():
     BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
-    API_KEY = "759cb2753beefcf28c82cafe746183ab"  # Replace with your actual API key
+    API_KEY = "6af6a8ccf981a5901934b56fc6850cf7" 
     CITY = "Kent"
     url = BASE_URL + "appid=" + API_KEY + "&q=" + CITY
     response = requests.get(url).json()
