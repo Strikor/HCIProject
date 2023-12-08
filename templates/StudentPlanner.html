@@ -49,17 +49,6 @@
         section {
             padding: 20px;
         }
-
-        .schedule-container {
-            margin-top: 20px;
-        }
-
-        .schedule-entry {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #f8f8f8;
-        }
     </style>
 </head>
 <body>
@@ -82,25 +71,8 @@
 
 <section>
     <h2>Student Planner</h2>
-    <p>Need some help getting organized? This helpful student planner shows you your current courses!</p>
-
-    <form action="/logout" method="get">
-        <button type="submit">Logout</button>
-    </form>
-
-    <!-- Schedule Display -->
-    <div class="schedule-container">
-        {% for entry in schedule %}
-            <div class="schedule-entry">
-                <div>Day: {{ entry['day'] }}</div>
-                <div>Start Time: {{ entry['start_time'] }}</div>
-                <div>End Time: {{ entry['end_time'] }}</div>
-                <div>Class: {{ entry['class_name'] }}</div>
-            </div>
-        {% else %}
-            <p>No schedule entries found.</p>
-        {% endfor %}
-    </div>
+    <p>Need some help getting organized? Use this helpful student planner!</p>
+    <!-- Add your content specific to the "Student Planner" page here -->
 </section>
 
 </body>
